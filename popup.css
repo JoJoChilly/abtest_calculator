@@ -1,0 +1,86 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background: #f4f4f9;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    width: 800px;
+    height: 600px;
+}
+h1 {
+    text-align: center;
+    color: #444;
+}
+.container {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 800px;
+    overflow: hidden;
+}
+.tabs {
+    display: flex;
+    border-bottom: 2px solid #ddd;
+}
+.tabs button {
+    flex: 1;
+    padding: 10px;
+    background: #f4f4f9;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+.tabs button:hover {
+    background: #e2e2e8;
+}
+.tabs button.active {
+    background: #fff;
+    border-bottom: 2px solid #007bff;
+    color: #007bff;
+}
+.tab {
+    display: none;
+    padding: 20px;
+}
+.tab.active {
+    display: block;
+}
+label {
+    display: block;
+    margin: 15px 0 5px;
+    color: #666;
+}
+input {
+    width: calc(100% - 22px);
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    transition: border 0.3s;
+}
+input:focus {
+    border-color: #007bff;
+}
+button.calculate {
+    background: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+button.calculate:hover {
+    background: #0056b3;
+}
+.results {
+    margin-top: 20px;
+    padding: 20px;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>A/B Test Calculators</title>
+        <link rel="stylesheet" href="popup.css" />
+    </head>
+    <body>
+        <div class="container">
+            <h1>A/B Test Calculator</h1>
+            <div class="tabs">
+                <button id="conversionTab" class="active">Conversion Rate Calculator</button>
+                <button id="arpuTab">ARPU Calculator</button>
+            </div>
+
+            <div id="conversion" class="tab active">
+                <h2>Conversion Rate Calculator</h2>
+                <div>
+                    <label>Group A - Sample Size: <input type="number" id="sampleSizeA_conv" value="200" /></label>
+                    <label>Conversions: <input type="number" id="conversionsA" value="60" /></label>
+                </div>
+                <div>
+                    <label>Group B - Sample Size: <input type="number" id="sampleSizeB_conv" value="180" /></label>
+                    <label>Conversions: <input type="number" id="conversionsB" value="45" /></label>
+                </div>
+                <button id="calculateConvBtn" class="calculate">Calculate</button>
+                <div id="results_conv" class="results"></div>
+            </div>
+
+            <div id="arpu" class="tab">
+                <h2>ARPU Calculator</h2>
+                <div>
+                    <label>Group A - Sample Size: <input type="number" id="sampleSizeA_arpu" value="200" /></label>
+                    <label>ARPU: <input type="number" id="arpuA" value="1.2" step="0.01" /></label>
+                    <label>Standard Deviation: <input type="number" id="stdDevA" value="0.5" step="0.01" /></label>
+                </div>
+                <div>
+                    <label>Group B - Sample Size: <input type="number" id="sampleSizeB_arpu" value="180" /></label>
+                    <label>ARPU: <input type="number" id="arpuB" value="1.4" step="0.01" /></label>
+                    <label>Standard Deviation: <input type="number" id="stdDevB" value="0.5" step="0.01" /></label>
+                </div>
+                <button id="calculateArpuBtn" class="calculate">Calculate</button>
+                <div id="results_arpu" class="results"></div>
+            </div>
+        </div>
+        <script src="popup.js"></script>
+    </body>
+</html>

@@ -1,0 +1,13 @@
+{
+    "manifest_version": 3,
+    "name": "A/B Test Calculator",
+    "version": "1.0",
+    "description": "Calculates the statistical significance of A/B tests.",
+    "permissions": ["contextMenus", "activeTab", "scripting"],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "action": {
+        "default_popup": "popup.html"
+    }
+}
