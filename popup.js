@@ -37,11 +37,37 @@ function calculateConversion() {
     const pValue = 2 * (1 - normalCdf(Math.abs(z), 0, 1));
     const significant = pValue < 0.05;
 
-    let results = `
-        <p>Group A Conversion Rate: ${(p1 * 100).toFixed(2)}%</p>
-        <p>Group B Conversion Rate: ${(p2 * 100).toFixed(2)}%</p>
-        <p>Statistical Significance: ${significant ? 'Yes' : 'No'}</p>
-`;
+    // 转化率提升百分比
+    const improvement = (((p1 - p2) / p2) * 100).toFixed(2);
+
+    // 置信度（假设这里使用标准正态分布的累积分布函数）
+    const confidence = (1 - pValue) * 100;
+
+    let improvementText;
+    if (improvement > 0) {
+        improvementText = `提高了 ${improvement}%`;
+    } else if (improvement < 0) {
+        improvementText = `降低了 ${Math.abs(improvement)}%`;
+    } else {
+        improvementText = `持平`;
+    }
+
+    let results;
+    if (significant) {
+        results = `
+        <p>试验有显著的统计学差异。</p>
+        <p>版本 A 的转化率比版本 B ${improvementText}</p>
+        <p>我们 ${confidence.toFixed(2)}% 肯定版本 A 的改动会带来转换率${
+            improvement > 0 ? '提升' : improvement < 0 ? '降低' : '持平'
+        }。</p>
+    `;
+    } else {
+        results = `
+        <p>很遗憾，试验没有显著的统计学差异。</p>
+        <p>版本 A 的转化率比版本 B ${improvementText}</p>
+    `;
+    }
+
     document.getElementById('results_conv').innerHTML = results;
 }
 
@@ -62,11 +88,37 @@ function calculateARPU() {
     const pValue = 2 * (1 - tDistributionCdf(Math.abs(t), df));
     const significant = pValue < 0.05;
 
-    let results = `
-    <p>Group A ARPU: $${arpuA.toFixed(2)}</p>
-    <p>Group B ARPU: $${arpuB.toFixed(2)}</p>
-    <p>Statistical Significance: ${significant ? 'Yes' : 'No'}</p>
-`;
+    // ARPU 提升百分比
+    const improvement = (((arpuA - arpuB) / arpuB) * 100).toFixed(2);
+
+    // 置信度（假设这里使用 Student's t 分布的累积分布函数）
+    const confidence = (1 - pValue) * 100;
+
+    let improvementText;
+    if (improvement > 0) {
+        improvementText = `提高了 ${improvement}%`;
+    } else if (improvement < 0) {
+        improvementText = `降低了 ${Math.abs(improvement)}%`;
+    } else {
+        improvementText = `持平`;
+    }
+
+    let results;
+    if (significant) {
+        results = `
+        <p>试验有显著的统计学差异。</p>
+        <p>版本 A 的 ARPU 比版本 B ${improvementText}</p>
+        <p>我们 ${confidence.toFixed(2)}% 肯定版本 A 的改动会带来 ARPU ${
+            improvement > 0 ? '提升' : improvement < 0 ? '降低' : '持平'
+        }。</p>
+    `;
+    } else {
+        results = `
+        <p>很遗憾，试验没有显著的统计学差异。</p>
+        <p>版本 A 的 ARPU 比版本 B ${improvementText}</p>
+    `;
+    }
+
     document.getElementById('results_arpu').innerHTML = results;
 }
 
