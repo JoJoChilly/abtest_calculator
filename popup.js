@@ -1,4 +1,20 @@
 document.addEventListener('DOMContentLoaded', function () {
+    // 获取所有输入框
+    const inputs = document.querySelectorAll('input[type="number"]');
+
+    // 为每个输入框加载保存的值或使用默认值
+    inputs.forEach(input => {
+        const savedValue = localStorage.getItem(input.id);
+        if (savedValue !== null) {
+            input.value = savedValue;
+        }
+
+        // 当输入值改变时保存到localStorage
+        input.addEventListener('change', function () {
+            localStorage.setItem(this.id, this.value);
+        });
+    });
+
     // Event listeners for tab buttons
     document.getElementById('conversionTab').addEventListener('click', function () {
         showTab('conversion');
