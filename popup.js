@@ -61,26 +61,26 @@ function calculateConversion() {
 
     let improvementText;
     if (improvement > 0) {
-        improvementText = `提高了 ${improvement}%`;
+        improvementText = `increased by ${improvement}%`;
     } else if (improvement < 0) {
-        improvementText = `降低了 ${Math.abs(improvement)}%`;
+        improvementText = `decreased by ${Math.abs(improvement)}%`;
     } else {
-        improvementText = `持平`;
+        improvementText = `remained the same`;
     }
 
     let results;
     if (significant) {
         results = `
-        <p>试验有显著的统计学差异。</p>
-        <p>版本 A 的转化率比版本 B ${improvementText}</p>
-        <p>我们 ${confidence.toFixed(2)}% 肯定版本 A 的改动会带来转换率${
-            improvement > 0 ? '提升' : improvement < 0 ? '降低' : '持平'
-        }。</p>
+        <p>The experiment shows a statistically significant difference.</p>
+        <p>The conversion rate of Version A ${improvementText} compared to Version B.</p>
+        <p>We are ${confidence.toFixed(2)}% confident that Version A's changes will ${
+            improvement > 0 ? 'increase' : improvement < 0 ? 'decrease' : 'not change'
+        } the conversion rate.</p>
     `;
     } else {
         results = `
-        <p>很遗憾，试验没有显著的统计学差异。</p>
-        <p>版本 A 的转化率比版本 B ${improvementText}</p>
+        <p>Unfortunately, the experiment does not show a statistically significant difference.</p>
+        <p>The conversion rate of Version A ${improvementText} compared to Version B.</p>
     `;
     }
 
@@ -112,26 +112,26 @@ function calculateARPU() {
 
     let improvementText;
     if (improvement > 0) {
-        improvementText = `提高了 ${improvement}%`;
+        improvementText = `increased by ${improvement}%`;
     } else if (improvement < 0) {
-        improvementText = `降低了 ${Math.abs(improvement)}%`;
+        improvementText = `decreased by ${Math.abs(improvement)}%`;
     } else {
-        improvementText = `持平`;
+        improvementText = `remained the same`;
     }
 
     let results;
     if (significant) {
         results = `
-        <p>试验有显著的统计学差异。</p>
-        <p>版本 A 的 ARPU 比版本 B ${improvementText}</p>
-        <p>我们 ${confidence.toFixed(2)}% 肯定版本 A 的改动会带来 ARPU ${
-            improvement > 0 ? '提升' : improvement < 0 ? '降低' : '持平'
-        }。</p>
+        <p>The experiment shows a statistically significant difference.</p>
+        <p>The ARPU of Version A ${improvementText} compared to Version B.</p>
+        <p>We are ${confidence.toFixed(2)}% confident that Version A's changes will ${
+            improvement > 0 ? 'increase' : improvement < 0 ? 'decrease' : 'not change'
+        } the ARPU.</p>
     `;
     } else {
         results = `
-        <p>很遗憾，试验没有显著的统计学差异。</p>
-        <p>版本 A 的 ARPU 比版本 B ${improvementText}</p>
+        <p>Unfortunately, the experiment does not show a statistically significant difference.</p>
+        <p>The ARPU of Version A ${improvementText} compared to Version B.</p>
     `;
     }
 
