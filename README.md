@@ -13,12 +13,10 @@ AB Test Calculator 是一个简单而强大的 Chrome 扩展程序，旨在帮�
 
 ### 安装扩展程序
 
-1. 在本页面点击“code”-“download zip”并解压到你认为方便的位置。
-2. 打开 Chrome 浏览器。
-3. 访问 [扩展程序](chrome://extensions/)。
-4. 点击左上角 “加载已解压的扩展程序” 按钮。
-5. 在弹出的对话框中，选择本程序所在的文件夹。
-6. 安装完成后，您会在浏览器右上角看到 AB Test Calculator 的图标。
+1. 打开 Chrome 浏览器。
+2. 访问 [插件链接](https://chromewebstore.google.com/detail/ab-test-calculator/dgihoibcadmaphiigkjckonaijhhekdc?hl=zh-CN&utm_source=ext_sidebar)。
+3. 点击右上角 “添加至chrome” 按钮。
+4. 安装完成后，您会在浏览器右上角看到 AB Test Calculator 的图标。
 
 ### 使用指南
 
