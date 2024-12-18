@@ -60,28 +60,58 @@ function calculateConversion() {
     const confidence = (1 - pValue) * 100;
 
     let improvementText;
+    const userLang = navigator.language || navigator.userLanguage; // 检测用户语言
     if (improvement > 0) {
-        improvementText = `increased by ${improvement}%`;
+        if (userLang.startsWith('zh')) {
+            improvementText = `提高了${improvement}%`;
+        } else {
+            improvementText = `increased by ${improvement}%`;
+        }
     } else if (improvement < 0) {
-        improvementText = `decreased by ${Math.abs(improvement)}%`;
+        if (userLang.startsWith('zh')) {
+            improvementText = `降低了${Math.abs(improvement)}%`;
+        } else {
+            improvementText = `decreased by ${Math.abs(improvement)}%`;
+        }
     } else {
-        improvementText = `remained the same`;
+        if (userLang.startsWith('zh')) {
+            improvementText = `保持不变`;
+        } else {
+            improvementText = `remained the same`;
+        }
     }
 
     let results;
     if (significant) {
-        results = `
-        <p>The experiment shows a statistically significant difference.</p>
-        <p>The conversion rate of Version A ${improvementText} compared to Version B.</p>
-        <p>We are ${confidence.toFixed(2)}% confident that Version A's changes will ${
-            improvement > 0 ? 'increase' : improvement < 0 ? 'decrease' : 'not change'
-        } the conversion rate.</p>
-    `;
+        if (userLang.startsWith('zh')) {
+            results = `
+            <p>实验有显著的统计学差异。</p>
+            <p>版本A的转化率相比于版本B${improvementText}。</p>
+            <p>我们有${confidence.toFixed(2)}%的信心认为版本A的改动将会${
+                improvement > 0 ? '提高' : improvement < 0 ? '降低' : '保持不变'
+            }转化率。</p>
+        `;
+        } else {
+            results = `
+            <p>The experiment shows a statistically significant difference.</p>
+            <p>The conversion rate of Version A ${improvementText} compared to Version B.</p>
+            <p>We are ${confidence.toFixed(2)}% confident that Version A's changes will ${
+                improvement > 0 ? 'increase' : improvement < 0 ? 'decrease' : 'not change'
+            } the conversion rate.</p>
+        `;
+        }
     } else {
-        results = `
-        <p>Unfortunately, the experiment does not show a statistically significant difference.</p>
-        <p>The conversion rate of Version A ${improvementText} compared to Version B.</p>
-    `;
+        if (userLang.startsWith('zh')) {
+            results = `
+            <p>很遗憾，实验没有显示出统计学上显著的差异。</p>
+            <p>版本A的转化率相比于版本B${improvementText}。</p>
+        `;
+        } else {
+            results = `
+            <p>Unfortunately, the experiment does not show a statistically significant difference.</p>
+            <p>The conversion rate of Version A ${improvementText} compared to Version B.</p>
+        `;
+        }
     }
 
     document.getElementById('results_conv').innerHTML = results;
@@ -111,28 +141,58 @@ function calculateARPU() {
     const confidence = (1 - pValue) * 100;
 
     let improvementText;
+    const userLang = navigator.language || navigator.userLanguage; // 检测用户语言
     if (improvement > 0) {
-        improvementText = `increased by ${improvement}%`;
+        if (userLang.startsWith('zh')) {
+            improvementText = `提高了${improvement}%`;
+        } else {
+            improvementText = `increased by ${improvement}%`;
+        }
     } else if (improvement < 0) {
-        improvementText = `decreased by ${Math.abs(improvement)}%`;
+        if (userLang.startsWith('zh')) {
+            improvementText = `降低了${Math.abs(improvement)}%`;
+        } else {
+            improvementText = `decreased by ${Math.abs(improvement)}%`;
+        }
     } else {
-        improvementText = `remained the same`;
+        if (userLang.startsWith('zh')) {
+            improvementText = `保持不变`;
+        } else {
+            improvementText = `remained the same`;
+        }
     }
 
     let results;
     if (significant) {
-        results = `
-        <p>The experiment shows a statistically significant difference.</p>
-        <p>The ARPU of Version A ${improvementText} compared to Version B.</p>
-        <p>We are ${confidence.toFixed(2)}% confident that Version A's changes will ${
-            improvement > 0 ? 'increase' : improvement < 0 ? 'decrease' : 'not change'
-        } the ARPU.</p>
-    `;
+        if (userLang.startsWith('zh')) {
+            results = `
+            <p>实验有显著的统计学差异。</p>
+            <p>版本A的ARPU相比于版本B${improvementText}。</p>
+            <p>我们有${confidence.toFixed(2)}%的信心认为版本A的改动将会${
+                improvement > 0 ? '提高' : improvement < 0 ? '降低' : '保持不变'
+            }ARPU。</p>
+        `;
+        } else {
+            results = `
+            <p>The experiment shows a statistically significant difference.</p>
+            <p>The ARPU of Version A ${improvementText} compared to Version B.</p>
+            <p>We are ${confidence.toFixed(2)}% confident that Version A's changes will ${
+                improvement > 0 ? 'increase' : improvement < 0 ? 'decrease' : 'not change'
+            } the ARPU.</p>
+        `;
+        }
     } else {
-        results = `
-        <p>Unfortunately, the experiment does not show a statistically significant difference.</p>
-        <p>The ARPU of Version A ${improvementText} compared to Version B.</p>
-    `;
+        if (userLang.startsWith('zh')) {
+            results = `
+            <p>很遗憾，实验没有显示出统计学上显著的差异。</p>
+            <p>版本A的ARPU相比于版本B${improvementText}。</p>
+        `;
+        } else {
+            results = `
+            <p>Unfortunately, the experiment does not show a statistically significant difference.</p>
+            <p>The ARPU of Version A ${improvementText} compared to Version B.</p>
+        `;
+        }
     }
 
     document.getElementById('results_arpu').innerHTML = results;
